@@ -18,5 +18,3 @@ function App() {
 }
 
 export default App;
-
-//! timing aula 6:18
