@@ -1,4 +1,5 @@
 import {
+  Button,
   Heading,
   Input,
   Box,
@@ -8,13 +9,39 @@ import {
   CardBody,
   CardFooter,
 } from "@chakra-ui/react";
-import { Btn } from "./Button";
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import { login } from "../services/login";
 
-interface ICard {
-  event: () => void;
+// import { Btn } from "./Button";
+
+// interface ICard {
+//   event: () => void;
+// }
+
+// export const CardIndex = ({ event }: ICard) => {
+
+interface userData {
+  email: string;
+  password: string;
+  name: string;
 }
 
-export const CardIndex = ({ event }: ICard) => {
+export const CardIndex = () => {
+  const [email, setEmail] = useState<string>("");
+  const [userData, setUserData] = useState<null | userData>();
+
+  useEffect(() => {
+    const getData = async () => {
+      const data: any | userData = await api;
+      setUserData(data);
+    };
+
+    getData();
+  });
+
+  console.log(userData);
+
   return (
     <Box
       backgroundColor="#1e192d"
@@ -33,6 +60,14 @@ export const CardIndex = ({ event }: ICard) => {
           <Flex justifyContent="center">
             <Heading size="xl"> Faça Login</Heading>
           </Flex>
+          <Flex justifyContent="center">
+            {userData === null ||
+              (userData === undefined ? (
+                <h1>Loading...</h1>
+              ) : (
+                <h1>Informações Carregadas</h1>
+              ))}
+          </Flex>
         </CardHeader>
         <CardBody
           display="flex"
@@ -42,11 +77,23 @@ export const CardIndex = ({ event }: ICard) => {
           gap=".7rem"
           width="80%"
         >
-          <Input placeholder="E-mail" type="email" />
+          <Input
+            placeholder="E-mail"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
           <Input placeholder="Password" type="password" />
         </CardBody>
         <CardFooter marginBottom="10px">
-          <Btn title={"Login"} event={event} />
+          <Button
+            onClick={() => login(email)}
+            colorScheme="purple"
+            size="lg"
+            width="100%"
+          >
+            {"Login"}
+          </Button>
+          {/* <Btn title={"Login"} event={event} /> */}
         </CardFooter>
       </Card>
     </Box>
