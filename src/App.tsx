@@ -7,7 +7,7 @@ import { Header } from "./components/header/Header";
 function App() {
   return (
     <ChakraProvider>
-      <Header title={"Bank"} />
+      <Header title={"DIO. Bank"} />
       <CardIndex event={login} />
     </ChakraProvider>
   );
