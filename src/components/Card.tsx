@@ -9,7 +9,6 @@ import {
   CardFooter,
 } from "@chakra-ui/react";
 import { Btn } from "./Button";
-import { api } from "../services/api";
 
 interface ICard {
   event: () => void;
