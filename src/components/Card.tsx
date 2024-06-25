@@ -29,6 +29,7 @@ interface userData {
 
 export const CardIndex = () => {
   const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [userData, setUserData] = useState<null | userData>();
 
   useEffect(() => {
@@ -82,11 +83,16 @@ export const CardIndex = () => {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-          <Input placeholder="Password" type="password" />
+          <Input
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </CardBody>
         <CardFooter marginBottom="10px">
           <Button
-            onClick={() => login(email)}
+            onClick={() => login(email, password)}
             colorScheme="purple"
             size="lg"
             width="100%"

@@ -1,7 +1,7 @@
 const conta = {
-  email: "kwuraa@dio.bank",
+  email: "email@dio.bank",
   password: "12345678",
-  name: "Matheus Morais Kawamura",
+  name: "Pessoa Exemplo da Silva",
 };
 
 export const api = new Promise((resolve) => {
