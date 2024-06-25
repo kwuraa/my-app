@@ -6,7 +6,7 @@ describe("login", () => {
 
   const mockEmail = "email@dio.bank";
   const mockPassword = "12345678";
-  const mockName = "Pessoa Exemplo da Silva";
+  const mockName = "Leia Organa";
 
   it("Deve exibir um alert Boas vindas caso o email seja valido!", async () => {
     await login(mockEmail, mockPassword);
