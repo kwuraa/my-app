@@ -1,15 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Conta from "./pages/Conta";
 import { ChakraProvider } from "@chakra-ui/react";
-import { CardIndex } from "./components/Card";
-
-// import { login } from "./services/login";
-import { Header } from "./components/header/Header";
+import { Layout } from "./components/Layout";
 
 function App() {
   return (
-    <ChakraProvider>
-      <Header title={"DIO. Bank"} />
-      <CardIndex />
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/conta" element={<Conta />} />
+          </Routes>
+        </Layout>
+      </ChakraProvider>
+    </BrowserRouter>
   );
 }
 

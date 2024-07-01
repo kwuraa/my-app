@@ -44,31 +44,20 @@ export const CardIndex = () => {
   console.log(userData);
 
   return (
-    <Box
-      backgroundColor="#1e192d"
-      minHeight="88.3vh"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Card
-        borderRadius="25px"
-        minWidth="550px"
-        minHeight="380px"
-        align="center"
-      >
+    <Box display="flex" paddingTop="3rem" justifyContent="center">
+      <Card borderRadius="25px" width="35rem" height="20rem" align="center">
         <CardHeader marginTop="10px">
           <Flex justifyContent="center">
             <Heading size="xl"> Faça Login</Heading>
           </Flex>
-          <Flex justifyContent="center">
+          {/* <Flex justifyContent="center">
             {userData === null ||
               (userData === undefined ? (
                 <h1>Loading...</h1>
               ) : (
                 <h1>Informações Carregadas</h1>
               ))}
-          </Flex>
+          </Flex> */}
         </CardHeader>
         <CardBody
           display="flex"
