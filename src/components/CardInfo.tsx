@@ -1,13 +1,17 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 interface ICardInfo {
-  text: string;
+  mainContent: string;
+  content: string;
 }
 
-const CardInfo = ({ text }: ICardInfo) => {
+const CardInfo = ({ mainContent, content }: ICardInfo) => {
   return (
-    <Box bgColor="white" minHeight="120px" padding={8}>
-      {text}
+    <Box bgColor="white" minHeight="120px" padding={8} borderRadius="25px">
+      <Text fontSize="2xl" fontWeight="bold">
+        {mainContent}
+      </Text>
+      <Text fontSize="xl">{content}</Text>
     </Box>
   );
 };

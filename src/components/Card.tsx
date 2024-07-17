@@ -9,8 +9,7 @@ import {
   CardBody,
   CardFooter,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { api } from "../api";
+import { useState } from "react";
 import { login } from "../services/login";
 
 // import { Btn } from "./Button";
@@ -21,27 +20,9 @@ import { login } from "../services/login";
 
 // export const CardIndex = ({ event }: ICard) => {
 
-interface userData {
-  email: string;
-  password: string;
-  name: string;
-}
-
 export const CardIndex = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [userData, setUserData] = useState<null | userData>();
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: any | userData = await api;
-      setUserData(data);
-    };
-
-    getData();
-  });
-
-  console.log(userData);
 
   return (
     <Box display="flex" paddingTop="3rem" justifyContent="center">
