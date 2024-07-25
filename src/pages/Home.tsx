@@ -1,5 +1,4 @@
 import {
-  Button,
   Heading,
   Input,
   Flex,
@@ -10,10 +9,28 @@ import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import { login } from "../services/login";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../components/AppContext";
+import { Btn } from "../components/Button";
+
 
 const Home = () => {
   const [email, setEmail] = useState<string>("");
+  const {setIsLoggedIn} = useContext(AppContext)
+  const navigate = useNavigate()
+
+  const validadeUser = async(email: string)  => {
+    const loggedIn = await login(email)
+
+    if(!loggedIn){
+      alert("E-mail invalido")
+    }
+
+    setIsLoggedIn(true)
+    navigate('/conta/28')
+  }
+
   return (
     <ChakraProvider>
       <Flex paddingTop="3rem" justifyContent="center">
@@ -39,14 +56,10 @@ const Home = () => {
             <Input placeholder="Password" type="password" />
           </CardBody>
           <CardFooter marginBottom="10px">
-            <Button
-              onClick={() => login(email)}
-              colorScheme="purple"
-              size="lg"
-              width="100%"
+            <Btn
+              onClick={() => validadeUser(email)}
             >
-              {"Login"}
-            </Button>
+            </Btn>
           </CardFooter>
         </Card>
       </Flex>
